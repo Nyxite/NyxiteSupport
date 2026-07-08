@@ -24,6 +24,7 @@ The central `Nyxite` repo is authoritative. This spec links to `docs/OPEN-DECISI
 
 - **[P]** — *Proposed.* A concrete decision filled in by this spec, subject to confirmation; not yet ratified in the master docs.
 - **[SUP-n]** — references a support decision (SUP-1…SUP-9) in `docs/OPEN-DECISIONS.md`.
+- **[DS-n]** — references the design-system decision **DS** (and sub-decisions DS-1…DS-3) in `docs/OPEN-DECISIONS.md`, which pins the shared [`NyxiteDesign`](https://github.com/Nyxite/NyxiteDesign) visual language. Per DS-2 the operator UI is a **React + shadcn/ui** SPA that adopts the `NyxiteDesign` tokens (Layer A only — no editor app-shell; see 05 §5.6).
 
 ## Documents
 
