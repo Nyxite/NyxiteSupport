@@ -8,7 +8,7 @@ It expands the architectural planning documents in the central [`Nyxite`](https:
 
 Nyxite is zero-knowledge everywhere on the **content plane** — the server stores only ciphertext and never holds a content key. The **support plane is the one deliberate, consensual exception**: a place a user may *voluntarily* disclose readable information to the maintainer, entered only by an explicit user action, and **architecturally separate** from content. A report carries **no content key and no content-plane ciphertext**; the content-plane guarantee is **untouched**. Reports are **not** end-to-end encrypted — the maintainer reads them (that is the point of a helpdesk) — and the user is told so, plainly, before sending. The load-bearing protections are the **explicit non-E2EE + destination notice** and the **user's own client-side, destructive redaction**, not encryption.
 
-Like [`NyxiteLicense`](https://github.com/Nyxite/NyxiteLicense), this service is **isolated vendor infrastructure**: it has no network path to any customer content plane, is central (there is exactly one helpdesk — the maintainer's), and plays no part in the E2EE guarantee between a user and their self-hosted server.
+Like [`NyxiteLicense`](https://github.com/Nyxite/NyxiteLicense), this service is **isolated vendor infrastructure**: it has no network path to any customer content plane, is **central by default** (one helpdesk — the maintainer's; an enterprise operator may opt into their own desk per SUP-10–SUP-13, [01 §1.6](01-support-plane.md)), and plays no part in the E2EE guarantee between a user and their self-hosted server.
 
 ## Boundary with the server and clients
 
@@ -23,7 +23,7 @@ The central `Nyxite` repo is authoritative. This spec links to `docs/OPEN-DECISI
 ## Proposal convention
 
 - **[P]** — *Proposed.* A concrete decision filled in by this spec, subject to confirmation; not yet ratified in the master docs.
-- **[SUP-n]** — references a support decision (SUP-1…SUP-9) in `docs/OPEN-DECISIONS.md`.
+- **[SUP-n]** — references a support decision (SUP-1…SUP-13) in `docs/OPEN-DECISIONS.md`.
 - **[DS-n]** — references the design-system decision **DS** (and sub-decisions DS-1…DS-3) in `docs/OPEN-DECISIONS.md`, which pins the shared [`NyxiteDesign`](https://github.com/Nyxite/NyxiteDesign) visual language. Per DS-2 the operator UI is a **React + shadcn/ui** SPA that adopts the `NyxiteDesign` tokens (Layer A only — no editor app-shell; see 05 §5.6).
 
 ## Documents

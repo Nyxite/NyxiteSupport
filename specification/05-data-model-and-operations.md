@@ -34,7 +34,7 @@
 
 - **Rate limits** — per `instance_fingerprint` and per `user_ref` at intake (the relaying server is the first gate, 02 §2.5), and per API token on the management API (04).
 - **Caps** — max screenshot bytes per attachment, max attachments per report, and a **max open tickets** per `user_ref` to bound spam.
-- **Instance recognition** — `POST /reports` accepts only from recognized/enabled instances (v1: the maintainer's official instance(s), SUP-9), analogous to the license `/register` anti-spam check.
+- **Instance recognition** — `POST /reports` accepts only from **recognized** instances (authenticated by instance fingerprint + license token, analogous to the license `/register` anti-spam check). Both the maintainer's official instance(s) and third-party self-hosted instances are recognized and route to the central desk (SUP-9, corrected 2026-07-12); an operator running their **own** opt-in desk (SUP-10–SUP-13) intakes locally and relays only confirmed bugs upstream via the same anti-spam anchor.
 
 ## 5.6 Stack & packaging [P]
 
@@ -44,7 +44,7 @@
 
 ## 5.7 Out of scope
 
-- **Self-hostable / per-operator helpdesk** — deferred backlog item (tickets local to the operator, only confirmed bugs routed upstream after a configurable age). Not built here.
+- **Self-hostable / per-operator helpdesk** — **resolved (SUP-10–SUP-13, 2026-07-12)** and specified in [01 §1.6](01-support-plane.md): an enterprise operator opts in via a drop-in `docker-compose.override.yml`, tickets stay local, only confirmed bugs route upstream after a configurable age. The **service code is the same**; this is a **deployment/routing mode**, not a separate build.
 - **Built-in AI categorizer** — categorization is the maintainer's automation over webhooks + API (04 §4.5); no model ships in this service.
 - **Any content, key, or user-data access** — architecturally impossible here (01 §1.2).
 - **Billing / payments / analytics** — not a helpdesk concern.
